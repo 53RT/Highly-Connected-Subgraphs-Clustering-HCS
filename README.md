@@ -10,7 +10,7 @@ Based on [NetworkX](https://networkx.github.io/) and [Numpy](http://www.numpy.or
 
 ---
 
-Usage:
+### Usage:
 
 It provides the sample graph which is used in the publication.
 It can be created by calling:
@@ -20,19 +20,19 @@ G = hcs.create_example_graph()
 ```
 ![alt text](res/example.png)
 
-Another easy way to get your graph is by passing the adjacency matrix to NetworkX
+Another easy way to get your graph is by passing the adjacency matrix to `NetworkX`
 ```python
 A = np.eye(4)
 G = nx.convert_matrix.from_numpy_array(A)
 ```
 ![alt text](res/simple_graph.png)
 
-The NetworkX graph can be clustered. There are two functions:
+The `NetworkX` graph can be clustered. There are two functions:
 
-* HCS(G): should be called if you want to get NetworkX Graph that is clustered into the subgraphs found by HCS.
-* labelled_HCS(G): should be called if you are just interested in the cluster labels. It returns a list with the cluster assignment for each vertex in G.
+* `HCS(G)`: should be called if you want to get `NetworkX` graph that is clustered into the sub-graphs found by `HCS`.
+* `labelled_HCS(G)`: should be called if you are just interested in the cluster labels. It returns a list with the cluster assignment for each vertex in G.
 
-The clustered example Graph looks like this:
+The clustered example graph looks like this:
 
 ![alt text](res/example_clustered.png)
 

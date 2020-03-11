@@ -85,7 +85,7 @@ def HCS(G):
 
     if not highly_connected(G, E):
         G = remove_edges(G, E)
-        sub_graphs = list(nx.connected_component_subgraphs(G))
+        sub_graphs = [G.subgraph(c).copy() for c in nx.connected_components(G)]
 
         if len(sub_graphs) == 2:
             H = HCS(sub_graphs[0])
@@ -94,6 +94,18 @@ def HCS(G):
             G = nx.compose(H, _H)
 
     return G
+
+
+def improved_HCS(G):
+    """
+    Implements improvements mentioned in the paper
+
+    1. Iterated HCS
+    2. Singleton adoption
+    3. Removing Low Degree Vertices
+
+    """
+    pass
 
 
 def labelled_HCS(G):
@@ -106,7 +118,9 @@ def labelled_HCS(G):
     """
 
     _G = HCS(G)
-    sub_graphs = nx.connected_component_subgraphs(_G)
+
+    sub_graphs = (G.subgraph(c).copy() for c in nx.connected_components(_G))
+
 
     labels = np.zeros(shape=(len(G)), dtype=np.uint16)
 
